@@ -8,6 +8,7 @@ import { createHttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter } from 'react-router-dom';
 
 const httpLink = createHttpLink({
   uri: 'https://planning-backend.herokuapp.com/v1/graphql'
@@ -20,9 +21,11 @@ const client = new ApolloClient({
 })
 
 ReactDOM.render(
-  <ApolloProvider client>
-      <App/>
-  </ApolloProvider>,
+  <BrowserRouter>
+      <ApolloProvider client={client}>
+          <App/>
+      </ApolloProvider>
+  </BrowserRouter>,
   document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
