@@ -11,7 +11,7 @@ function App() {
  return (
     <div>
       <NavBar />
-      <Container fluid>
+      <Container>
         <Switch>
           <Route exact path="/" component={ProfileView} />
           <Route exact path="/transaction" component={TransactionView} />
