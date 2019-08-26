@@ -4,37 +4,32 @@ import SingleTransactionForm from '../forms/SingleTransactionForm';
 import TransactionCard from '../TransactionCard';
 import transactionTypes from '../../constants/transactionTypes';
 import TransactionModal from '../TransactionModal';
+import { singleMutation } from '../../mutations/transactionMutations';
 
 // Represents the view at /transaction route. This will feature a form allowing users
 // to input financial transactions for tracking.
 class TransactionView extends Component {
     constructor(props) {
       super(props);
+
+      // Transaction Type represents one of the implemented types, so far
+      // oneTime and recurring
       this.state = {
-        modalOpen: false,
         transactionType: ''
       };
     }
 
-    // Toggles the modal state
-   toggle = () => {
-      const { modalOpen } = this.state;
-      this.setState({
-        modalOpen: !modalOpen
-      });
-    }
 
     // Sets a transaction type so the modal knows how render,
-    // then toggles the modal
     transactionTypeCallback = (type) => {
       this.setState({
         transactionType: type
-      }, this.toggle);
+      });
     }
 
     render() {
       const types = Object.keys(transactionTypes);
-      const { modalOpen, transactionType } = this.state;
+      const { transactionType } = this.state;
       // Get correct React component for form and UI name from transactionType
       const { form, name } = transactionType ? transactionTypes[transactionType] : {};
       return (
@@ -53,7 +48,13 @@ class TransactionView extends Component {
                   </Col>);
                 })}
             </Row>
-            <TransactionModal toggle={this.toggle} isOpen={modalOpen} type={transactionType} ComponentForm={form} name={name}/>
+            {transactionType &&
+            <TransactionModal
+              toggle={() => this.setState({transactionType: ''})}
+              isOpen={!!transactionType}
+              ComponentForm={form}
+              name={name}/>
+            }
         </div>
       )
     }
