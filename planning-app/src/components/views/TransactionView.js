@@ -39,8 +39,8 @@ class TransactionView extends Component {
       const { form, name } = transactionType ? transactionTypes[transactionType] : {};
       return (
         <div>
-          <Jumbotron className="mt-5">
-            <h1 className="display-3">Track now for a better tomorrow!</h1>
+          <Jumbotron className="mt-5 text-center pb-6">
+            <h1 className="display-4 pb-2">Track your money now for a better financial future!</h1>
             <p className="lead">Enter your financial transactions to help you keep track of every dollar and allow us to customize our advising.</p>
             <hr className="my-2" />
             <p>Both one time transactions like food purchases and recurring transactions like Netflix subscriptions can be entered below</p>
@@ -49,7 +49,7 @@ class TransactionView extends Component {
                 {types.map((type)=> {
                   const {name, text } = transactionTypes[type];
                   return (<Col md key={name}>
-                    <TransactionCard title={name} text={text} buttonCallback={() => this.transactionTypeCallback(type)} buttonText={'Track ' + name}/>
+                    <TransactionCard title={name} text={text} buttonCallback={() => this.transactionTypeCallback(type)} buttonText={name}/>
                   </Col>);
                 })}
             </Row>
