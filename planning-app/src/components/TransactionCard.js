@@ -7,7 +7,7 @@ const TransactionCard = (props) => {
     <Card body className="text-center">
       <CardTitle className="h1">{title}</CardTitle>
       <CardText className="mx-4">{text}</CardText>
-      <Button className="mt-2 w-50 mx-auto" onClick={buttonCallback}>Enter {buttonText} Transactions</Button>
+      <Button className="mt-2 w-50 mx-auto" color="info" onClick={buttonCallback}>Enter {buttonText} Transactions</Button>
     </Card>
     </div>
   );

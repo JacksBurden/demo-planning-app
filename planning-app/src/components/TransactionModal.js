@@ -12,7 +12,7 @@ const TransactionModal = (props) => {
             <ComponentForm/>}
           </ModalBody>
           <ModalFooter>
-            <Button color="primary">Submit {name} Transaction</Button>{' '}
+            <Button color="info">Submit {name} Transaction</Button>{' '}
             <Button color="secondary" onClick={toggle}>Cancel</Button>
           </ModalFooter>
         </Modal>
