@@ -1,16 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { NavLink as RouterLink } from 'react-router-dom'
 import { withRouter } from 'react-router'
 import {
-  Collapse,
   Navbar,
   NavbarBrand,
   Nav,
   NavItem,
   NavLink } from 'reactstrap';
 
-class NavBar extends Component {
-  render() {
+const NavBar = (props) => {
     return (
       <div>
           <Navbar color="faded" expand="lg">
@@ -36,6 +34,5 @@ class NavBar extends Component {
         </div>
     )
   }
-}
 
 export default withRouter(NavBar)
