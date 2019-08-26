@@ -5,11 +5,15 @@ import { recurringCategories } from '../../constants/transactionCategories';
 class RecurringTransactionForm extends Component {
   constructor(props) {
     super(props);
+    const today = new Date();
+    const convert = (date) => {
+      return date.toISOString().slice(0,10);
+    }
     this.state = {
       amount: '',
-      type: 'Not Selected',
-      startDate: '',
-      endDate:'',
+      category: 'Not Selected',
+      startDate: convert(new Date()),
+      endDate: convert(new Date(today.getFullYear() + 1, today.getMonth(), today.getDate())),
       // If indefinite is true endDate must be ''
       indefinite: false
     }
@@ -20,8 +24,19 @@ class RecurringTransactionForm extends Component {
     const { indefinite } = this.state;
     this.setState({
       indefinite: !indefinite,
-      endDate: ''
+      endDate: null
     });
+  }
+
+  // Handles data callback to parent modal so modal can submit data to GraphQL
+  componentDidUpdate(prevState) {
+    const { dataCallback } = this.props;
+    const { amount, category, startDate, endDate, indefinite } = this.state;
+    const { prevAmount, prevCategory, prevEndDate, prevStartDate, prevIndefinite } = prevState
+    if(amount !== prevAmount || category !== prevCategory || startDate !== prevStartDate
+      || endDate !== prevEndDate || prevIndefinite != indefinite) {
+      dataCallback({ amount, category, startDate, endDate, recurring: true});
+    }
   }
 
   render() {
@@ -52,7 +67,7 @@ class RecurringTransactionForm extends Component {
               id="endDate"
               placeholder="date placeholder"
               onChange={event => this.setState({endDate: event.target.value})}
-              value={this.state.endDate}
+              value={this.state.endDate || ''}
               disabled={indefinite}
             />
           </FormGroup>
@@ -64,7 +79,7 @@ class RecurringTransactionForm extends Component {
           </FormGroup>
         <FormGroup>
           <Label for="typeSelect">Enter the transaction category</Label>
-          <Input type="select" name="select" id="typeSelect" onSelect={event => this.setState({type: event.target.value})}>
+          <Input type="select" name="select" id="typeSelect" onChange={event => this.setState({category: event.target.value})}>
             {recurringCategories.map((category) => {
               return <option key={category}>{category}</option>
             })}

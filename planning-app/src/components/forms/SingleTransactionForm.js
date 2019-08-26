@@ -6,11 +6,21 @@ class SingleTransactionForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      amount: '',
-      type: 'Not Selected',
-      date: '',
+      amount: 0.00,
+      category: 'Not Selected',
+      startDate: new Date().toISOString().slice(0, 10),
     }
   }
+
+  componentDidUpdate(prevState) {
+    const { dataCallback } = this.props;
+    const { amount, category, startDate } = this.state;
+    const { prevAmount, prevCategory, prevStartDate } = prevState;
+    if(amount !==prevAmount || category !== prevCategory || startDate !== prevStartDate) {
+      dataCallback(this.state);
+    }
+  }
+
 
   render() {
     return (
@@ -27,13 +37,13 @@ class SingleTransactionForm extends Component {
             name="date"
             id="Date"
             placeholder="date placeholder"
-            onChange={event => this.setState({date: event.target.value})}
-            value={this.state.date}
+            onChange={event => this.setState({startDate: event.target.value})}
+            value={this.state.startDate}
           />
         </FormGroup>
         <FormGroup>
           <Label for="typeSelect">Enter the transaction category</Label>
-          <Input type="select" name="select" id="typeSelect" onSelect={event => this.setState({type: event.target.value})}>
+          <Input type="select" name="select" id="typeSelect" onChange={event => this.setState({category: event.target.value})}>
             {oneTimeCategories.map((category) => {
               return <option key={category}>{category}</option>
             })}

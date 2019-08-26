@@ -13,7 +13,7 @@ const NavBar = (props) => {
     return (
       <div>
           <Navbar color="dark" expand="lg">
-                <NavbarBrand><img height={40} width={40}src={logo}/><b className="text-info">Planning App</b></NavbarBrand>
+                <NavbarBrand><img alt="React" height={40} width={40}src={logo}/><b className="text-info">Planning App</b></NavbarBrand>
                 <Nav className="ml-auto" navbar>
                     <NavItem>
                         <NavLink className="font-weight-bold mr-4 text-info" tag={RouterLink} exact to="/planning">
