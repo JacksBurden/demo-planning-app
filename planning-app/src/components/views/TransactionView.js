@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import { Row, Col, Jumbotron } from 'reactstrap';
-import { Redirect } from 'react-router-dom'
-import SingleTransactionForm from '../forms/SingleTransactionForm';
 import TransactionCard from '../TransactionCard';
 import transactionTypes from '../../constants/transactionTypes';
 import TransactionModal from '../TransactionModal';
-import { singleMutation } from '../../mutations/transactionMutations';
 
 // Represents the view at /transaction route. This will feature a form allowing users
 // to input financial transactions for tracking.
@@ -40,7 +37,7 @@ class TransactionView extends Component {
             <h1 className="display-4 pb-2">Track your money now for a better financial future!</h1>
             <p className="lead">Enter your financial transactions to help you keep track of every dollar and allow us to customize our advising.</p>
             <hr className="my-2" />
-            <p>Both one time transactions like food purchases and recurring transactions like Netflix subscriptions can be entered below</p>
+            <p>Both one time transactions like food purchases and recurring transactions like Netflix subscriptions can be entered below.</p>
             </Jumbotron>
             <Row>
                 {types.map((type)=> {

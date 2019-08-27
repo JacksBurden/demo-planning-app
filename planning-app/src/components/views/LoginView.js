@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom';
-import {Button, Input, Jumbotron, Row, Col } from 'reactstrap'
+import {Button, Jumbotron, Row, Col } from 'reactstrap'
 import LoginForm from '../forms/LoginForm.js';
 import SignupForm from '../forms/SignupForm.js';
 

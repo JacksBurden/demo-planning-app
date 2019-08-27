@@ -20,7 +20,6 @@ class TransactionModal extends React.Component {
     // contents of child form state.
     dataCallback = (data) => {
       this.transactionData = Object.assign(this.transactionData, data);
-      console.log(this.transactionData);
     }
 
     render() {

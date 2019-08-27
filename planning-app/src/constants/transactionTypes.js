@@ -8,7 +8,7 @@ const transactionTypes = { oneTime:
                             },
                            recurring:
                               { name: 'Recurring',
-                                text: 'Enter transactions that are recurring, such as cable and phone bills, subscription services, and gym memberships',
+                                text: 'Enter transactions that are recurring, such as cable and phone bills, subscription services, and gym memberships.',
                                 form: RecurringTransactionForm
                               }
                           };

@@ -13,7 +13,7 @@ class RecurringTransactionForm extends Component {
     this.state = {
       dollarAmount: '',
       centAmount: '',
-      category: 'Not Selected',
+      category: 'Subscription Service',
       startDate: convert(new Date()),
       endDate: convert(new Date(today.getFullYear() + 1, today.getMonth(), today.getDate())),
       // If indefinite is true endDate must be ''
@@ -35,10 +35,10 @@ class RecurringTransactionForm extends Component {
   componentDidUpdate(prevState) {
     const { dataCallback } = this.props;
     const { dollarAmount, centAmount, category, startDate, endDate, indefinite } = this.state;
-    const { prevAmount, prevCategory, prevEndDate, prevStartDate, prevIndefinite, prevDollarAmount, prevCentAmount } = prevState
+    const { prevCategory, prevEndDate, prevStartDate, prevIndefinite, prevDollarAmount, prevCentAmount } = prevState
     if(category !== prevCategory || startDate !== prevStartDate
-      || endDate !== prevEndDate || prevIndefinite != indefinite || prevDollarAmount != dollarAmount ||
-      prevCentAmount != centAmount) {
+      || endDate !== prevEndDate || prevIndefinite !== indefinite || prevDollarAmount !== dollarAmount ||
+      prevCentAmount !== centAmount) {
       const total = new Number(`${dollarAmount}.${centAmount}`);
       // Just sets data for submit in parent
       dataCallback({ amount: total, category, startDate, endDate, recurring: true});

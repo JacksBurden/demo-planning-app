@@ -17,7 +17,7 @@ const TransactionList = ({transactions, text}) => {
                                 {transaction.recurring === true ? 'Start' : ''} Date:
                               <span className="font-weight-normal"> {transaction.startDate}</span><br/>
                               {transaction.endDate &&
-                              <div>End Date: <span className="font-weight-normal">{transaction.endDate}</span></div>}
+                              <span>End Date: <span className="font-weight-normal">{transaction.endDate}</span></span>}
                           </CardText>
                       </CardBody>
                   </Card>

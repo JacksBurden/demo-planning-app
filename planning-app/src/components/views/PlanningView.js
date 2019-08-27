@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Spinner, Jumbotron, Row, Col } from 'reactstrap';
-import { Redirect } from 'react-router-dom';
 import { PlanningViewQuery } from '../../queries/planningQueries';
 import { Query } from 'react-apollo';
 import TransactionStatistics from '../TransactionStatistics';
@@ -28,7 +27,7 @@ class PlanningView extends Component {
             <Jumbotron className="mt-5 text-center pb-6">
               <h2 className="display-4 pb-2">View all of your important financial data in one place!</h2>
               <hr/>
-              <h3 className="font-weight-light">This is your goto page for custom statistics to track your spending.</h3>
+              <h3 className="font-weight-light">This is your go to page for custom statistics to track your spending.</h3>
               </Jumbotron>
               <Row>
                   <Col sm={4}>

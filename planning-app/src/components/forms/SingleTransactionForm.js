@@ -19,7 +19,7 @@ class SingleTransactionForm extends Component {
     const { dataCallback } = this.props;
     const { dollarAmount, centAmount, category, startDate } = this.state;
     const { prevDollarAmount, prevCentAmount, prevCategory, prevStartDate } = prevState;
-    if(dollarAmount !==prevDollarAmount || category !== prevCategory || startDate !== prevStartDate || centAmount != prevCentAmount) {
+    if(dollarAmount !== prevDollarAmount || category !== prevCategory || startDate !== prevStartDate || centAmount !== prevCentAmount) {
       // Creates appropriate dollar amount
       const total = new Number(`${dollarAmount}.${centAmount}`);
       const variables = {amount: total, category, startDate}

@@ -4,7 +4,6 @@ import { withRouter } from 'react-router'
 import logo from '../logo.svg'
 import {
   Navbar,
-  NavbarBrand,
   Nav,
   NavItem,
   NavLink } from 'reactstrap';
@@ -14,7 +13,7 @@ const NavBar = (props) => {
     return (
       <div>
           <Navbar color="dark" expand="lg">
-                <NavbarBrand><NavLink className="d-inline" tag={RouterLink} exact to="/planning"><img alt="React" height={40} width={40}src={logo}/></NavLink><b className="text-info">Planning App</b></NavbarBrand>
+                <NavLink className="d-inline" tag={RouterLink} exact to="/planning"><img alt="React" height={40} width={40}src={logo}/></NavLink><b className="text-info">Planning App</b>
                 <Nav className="ml-auto" navbar>
                     <NavItem>
                         <NavLink className="font-weight-bold mr-4 text-info" tag={RouterLink} exact to="/planning">

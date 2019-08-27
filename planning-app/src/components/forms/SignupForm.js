@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { FormGroup, Label, Input, InputGroup, InputGroupAddon, Form } from 'reactstrap';
-import { oneTimeCategories } from '../../constants/transactionCategories';
+import { FormGroup, Label, Input,  Form } from 'reactstrap';
 
 class SignupForm extends Component {
   constructor(props) {

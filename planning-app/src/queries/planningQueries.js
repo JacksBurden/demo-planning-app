@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 
 const PlanningViewQuery = gql`
 query planningview($userid: Int!) {
-  top: transaction(where: {userid: {_eq: $userid}}, order_by: {amount: desc_nulls_last}, limit: 3) {
+  top: transaction(where: {userid: {_eq: $userid}}, order_by: {amount: desc_nulls_last}, limit: 5) {
     amount
     category
     startDate
