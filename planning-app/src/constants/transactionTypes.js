@@ -1,5 +1,6 @@
 import SingleTransactionForm from '../components/forms/SingleTransactionForm';
 import RecurringTransactionForm from '../components/forms/RecurringTransactionForm'
+// Allows some flexibility for more transaction types to be added in the future
 const transactionTypes = { oneTime:
                             { name: 'One Time',
                               text: 'Enter transactions that occurred one time, like a bill at a restaurant or a new pair of pants.',

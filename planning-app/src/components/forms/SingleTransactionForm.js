@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { FormGroup, Label, Input, InputGroup, InputGroupAddon } from 'reactstrap';
 import { oneTimeCategories } from '../../constants/transactionCategories';
 
+// Represents the input of a one time transaction as a controlled component
 class SingleTransactionForm extends Component {
   constructor(props) {
     super(props);
@@ -12,6 +13,7 @@ class SingleTransactionForm extends Component {
     }
   }
 
+  // Need to update parent data when necessary for submission
   componentDidUpdate(prevState) {
     const { dataCallback } = this.props;
     const { amount, category, startDate } = this.state;

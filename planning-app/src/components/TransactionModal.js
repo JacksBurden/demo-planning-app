@@ -26,6 +26,7 @@ class TransactionModal extends React.Component {
     render() {
       const { isOpen,  toggle, ComponentForm, name } = this.props;
       // This will be passed into mutator as variables
+      // Must be passed as array to Hasura function
       const objects = [this.transactionData]
       return (
       <Modal isOpen={isOpen} toggle={toggle}>
@@ -35,7 +36,7 @@ class TransactionModal extends React.Component {
                 <ComponentForm dataCallback={this.dataCallback}/>}
               </ModalBody>
               <ModalFooter>
-                <Mutation mutation={TransactionMutation} variables={{objects}}>
+                <Mutation mutation={TransactionMutation} variables={{objects}} onCompleted={() => {toggle()}}>
                   {mutation => {
                     return <Button color="info" onClick={mutation}>Submit {name} Transaction</Button>
                   }}

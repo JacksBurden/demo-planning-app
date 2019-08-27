@@ -9,6 +9,7 @@ import {
   NavItem,
   NavLink } from 'reactstrap';
 
+// The header navbar component that handles SPA routing
 const NavBar = (props) => {
     return (
       <div>

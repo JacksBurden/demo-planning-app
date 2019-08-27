@@ -9,6 +9,7 @@ class RecurringTransactionForm extends Component {
     const convert = (date) => {
       return date.toISOString().slice(0,10);
     }
+
     this.state = {
       amount: '',
       category: 'Not Selected',
@@ -29,12 +30,14 @@ class RecurringTransactionForm extends Component {
   }
 
   // Handles data callback to parent modal so modal can submit data to GraphQL
+  // if any data has changed in state
   componentDidUpdate(prevState) {
     const { dataCallback } = this.props;
     const { amount, category, startDate, endDate, indefinite } = this.state;
     const { prevAmount, prevCategory, prevEndDate, prevStartDate, prevIndefinite } = prevState
     if(amount !== prevAmount || category !== prevCategory || startDate !== prevStartDate
       || endDate !== prevEndDate || prevIndefinite != indefinite) {
+      // Just sets data for submit in parent
       dataCallback({ amount, category, startDate, endDate, recurring: true});
     }
   }

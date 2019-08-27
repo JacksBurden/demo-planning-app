@@ -10,16 +10,25 @@ import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter } from 'react-router-dom';
 
+// Create link to GraphQL backend running on Hasura
+// using Heroku and Postgres
 const httpLink = createHttpLink({
   uri: 'https://planning-backend.herokuapp.com/v1/graphql'
 })
 
-// 3
+// Setup ApolloClient instance for GraphQL queries
 const client = new ApolloClient({
   link: httpLink,
-  cache: new InMemoryCache()
+  cache: new InMemoryCache({
+    dataIdFromObject: (object) => {
+      if(object.__typename === 'user') {
+        return object.firstname;
+      }
+    }
+  })
 })
 
+// Render the app
 ReactDOM.render(
   <BrowserRouter>
       <ApolloProvider client={client}>

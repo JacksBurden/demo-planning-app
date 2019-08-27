@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardTitle, CardText, Button } from 'reactstrap';
 
+// A card representing the data of a single transaction.
 const TransactionCard = (props) => {
   const { title, text, buttonCallback, buttonText } = props;
   return (<div>
