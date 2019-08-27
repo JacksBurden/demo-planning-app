@@ -31,8 +31,8 @@ class LoginView extends Component {
           </Jumbotron>
         <Row>
          <Col sm="12" md={{ size: 6, offset: 3 }}>
-            <Button color="info" className="mx-auto" onClick={e => this.setState({login: !login})}>{login ? 'Go to Signup' : 'Go to Login'}</Button>
             {login ? <LoginForm userCallback={this.userCallback}/> : <SignupForm/>}
+            <Button color="info" onClick={e => this.setState({login: !login})}>{login ? 'Go to Signup' : 'Go to Login'}</Button>
         </Col>
         </Row>
       </div>

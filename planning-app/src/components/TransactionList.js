@@ -8,10 +8,16 @@ const TransactionList = ({transactions, text}) => {
               {transactions.map((transaction) => {
                 return (
                   <Card key={transaction.transactionid} className="border border-info border-lg rounded mb-2">
-                      <CardBody>
+                      <CardBody className="font-weight-bold" style={{backgroundColor: '#e9ecef'}}>
                           <CardTitle className="mb-2">{transaction.category} Transaction</CardTitle>
-                          <CardText>Amount: ${transaction.amount}<br/>{transaction.recurring === true ? 'Start' : ''} Date: {transaction.startDate}<br/>
-                          {transaction.endDate ? `End Date:${transaction.endDate}`: ''}
+                          <CardText>
+                              Amount: <span className="font-weight-normal">
+                                ${transaction.amount}
+                              </span><br/>
+                                {transaction.recurring === true ? 'Start' : ''} Date:
+                              <span className="font-weight-normal"> {transaction.startDate}</span><br/>
+                              {transaction.endDate &&
+                              <div>End Date: <span className="font-weight-normal">{transaction.endDate}</span></div>}
                           </CardText>
                       </CardBody>
                   </Card>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FormGroup, Label, Input, InputGroup, InputGroupAddon } from 'reactstrap';
+import { FormGroup, Label, Input, InputGroup, InputGroupAddon, Row, Col } from 'reactstrap';
 import { oneTimeCategories } from '../../constants/transactionCategories';
 
 // Represents the input of a one time transaction as a controlled component
@@ -7,8 +7,9 @@ class SingleTransactionForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      amount: 0.00,
-      category: 'Not Selected',
+      dollarAmount: '',
+      centAmount: '',
+      category: 'Food/Beverage',
       startDate: new Date().toISOString().slice(0, 10),
     }
   }
@@ -16,10 +17,13 @@ class SingleTransactionForm extends Component {
   // Need to update parent data when necessary for submission
   componentDidUpdate(prevState) {
     const { dataCallback } = this.props;
-    const { amount, category, startDate } = this.state;
-    const { prevAmount, prevCategory, prevStartDate } = prevState;
-    if(amount !==prevAmount || category !== prevCategory || startDate !== prevStartDate) {
-      dataCallback(this.state);
+    const { dollarAmount, centAmount, category, startDate } = this.state;
+    const { prevDollarAmount, prevCentAmount, prevCategory, prevStartDate } = prevState;
+    if(dollarAmount !==prevDollarAmount || category !== prevCategory || startDate !== prevStartDate || centAmount != prevCentAmount) {
+      // Creates appropriate dollar amount
+      const total = new Number(`${dollarAmount}.${centAmount}`);
+      const variables = {amount: total, category, startDate}
+      dataCallback(variables);
     }
   }
 
@@ -28,10 +32,20 @@ class SingleTransactionForm extends Component {
     return (
       <div>
       <Label for="amount">Enter Transaction Amount</Label>
+      <Row className="no-gutters">
+      <Col>
       <InputGroup className="mb-4">
         <InputGroupAddon addonType="prepend">$</InputGroupAddon>
-        <Input name="amount" placeholder="Amount" min={0.00} type="number" value={this.state.amount} onChange={event => this.setState({amount: event.target.value})}/>
+        <Input name="amount" placeholder="Dollars" min={0.00} type="number" value={this.state.dollarAmount} onChange={event => this.setState({dollarAmount: event.target.value})}/>
       </InputGroup>
+      </Col>
+      .
+      <Col sm={3}>
+      <InputGroup className="mb-4">
+        <Input name="amount" placeholder="Cents" min={0.00} max={99} type="number" value={this.state.centAmount} onChange={event => this.setState({centAmount: event.target.value})}/>
+      </InputGroup>
+      </Col>
+      </Row>
       <FormGroup>
           <Label for="Date">Date of Transaction</Label>
           <Input
