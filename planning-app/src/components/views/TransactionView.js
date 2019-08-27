@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col, Jumbotron } from 'reactstrap';
+import { Redirect } from 'react-router-dom'
 import SingleTransactionForm from '../forms/SingleTransactionForm';
 import TransactionCard from '../TransactionCard';
 import transactionTypes from '../../constants/transactionTypes';
@@ -26,6 +27,7 @@ class TransactionView extends Component {
         transactionType: type
       });
     }
+
 
     render() {
       const types = Object.keys(transactionTypes);
